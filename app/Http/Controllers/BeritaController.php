@@ -15,8 +15,8 @@ class BeritaController extends Controller
      */
     public function index()
     {
-        $Berit = Berita::latest()->paginate(5);
-        return view ('Berit.index',compact('Berit'))->with('i',(request()->input('page', 1) -1) * 5);
+        $berit = Berita::latest()->paginate(5);
+        return view ('berit.index',compact('berit'))->with('i',(request()->input('page', 1) -1) * 5);
     }
 
     /**
@@ -28,7 +28,7 @@ class BeritaController extends Controller
     {
         $kategor = Kategori::all();
         
-        return view('Berit.create', compact('kategor'));
+        return view('berit.create', compact('kategor'));
     }
 
     /**
@@ -47,7 +47,7 @@ class BeritaController extends Controller
         
         Berita::create($request->all());
 
-        return redirect()->route('Berit.index')->with('succes','Data Berhasil di Input');
+        return redirect()->route('berit.index')->with('succes','Data Berhasil di Input');
     }
 
     /**
@@ -56,9 +56,9 @@ class BeritaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Berita $Berit)
+    public function show(Berita $berit)
     {
-        return view('Berit.show', compact('Berit'));
+        return view('berit.show', compact('Berit'));
     }
 
     /**
@@ -67,9 +67,9 @@ class BeritaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Berita $Berit)
+    public function edit(Berita $berit)
     {
-        return view('Berit.edit', compact('Berit'));
+        return view('berit.edit', compact('berit'));
     }
 
     /**
@@ -79,16 +79,16 @@ class BeritaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Berita $Berit)
+    public function update(Request $request, Berita $berit)
     {
         $request->validate([
             'JudulBerita' => 'required',
             'IsiBerita' => 'required',
             'kategori_id' => 'required|exists:kategoris,id'
         ]);
-        $Berit->update($request->all());
+        $berit->update($request->all());
 
-        return redirect()->route('Berit.index')->with('succes','Data Berhasil di Update');
+        return redirect()->route('berit.index')->with('succes','Data Berhasil di Update');
     }
 
     /**
@@ -97,9 +97,9 @@ class BeritaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Berita $Berit)
+    public function destroy(Berita $berit)
     {
-        $Berit->delete();
-        return redirect()->route('Berit.index')->with('succes','Data Berhasil di Hapus');
+        $berit->delete();
+        return redirect()->route('berit.index')->with('succes','Data Berhasil di Hapus');
     }
 }
