@@ -17,6 +17,7 @@ class CreateBeritasTable extends Migration
             $table->id();
             $table->text('Judul');
             $table->text('IsiBerita');
+            $table->timestamps();
         });
     }
 

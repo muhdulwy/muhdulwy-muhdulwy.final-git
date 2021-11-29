@@ -16,7 +16,7 @@ class Berita extends Model
         'Judul', 'IsiBerita', 'kategori_id'
     ];
     
-    public function kategoris()
+    public function kategori()
     {
         return $this->belongsTo(Kategori::class);
     }

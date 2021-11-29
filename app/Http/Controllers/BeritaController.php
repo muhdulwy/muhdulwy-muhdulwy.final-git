@@ -15,6 +15,7 @@ class BeritaController extends Controller
      */
     public function index()
     {
+       
         $berit = Berita::latest()->paginate(5);
         return view ('berit.index',compact('berit'))->with('i',(request()->input('page', 1) -1) * 5);
     }
@@ -27,7 +28,6 @@ class BeritaController extends Controller
     public function create()
     {
         $kategor = Kategori::all();
-        
         return view('berit.create', compact('kategor'));
     }
 
@@ -40,7 +40,7 @@ class BeritaController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'JudulBerita' => 'required',
+            'Judul' => 'required',
             'IsiBerita' => 'required',
             'kategori_id' => 'required|exists:kategoris,id'
         ]);
@@ -82,7 +82,7 @@ class BeritaController extends Controller
     public function update(Request $request, Berita $berit)
     {
         $request->validate([
-            'JudulBerita' => 'required',
+            'Judul' => 'required',
             'IsiBerita' => 'required',
             'kategori_id' => 'required|exists:kategoris,id'
         ]);

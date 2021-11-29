@@ -32,7 +32,7 @@ class KategoriController extends Controller
      */
     public function create()
     {
-        return view('kategor.show', compact('kategor'));
+        return view('kategor.create',);
     }
 
     /**

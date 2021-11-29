@@ -4,10 +4,10 @@
     <div class="row mt-5 mb-5">
         <div class="col-lg-12 margin-tb">
             <div class="float-left">
-                <h2>Blog Berita ITC</h2>
+                <h2>Blog Kategori ITC</h2>
             </div>
             <div class="float-right">
-                <a class="btn btn-success" href="{{ route('berit.create') }}"> Input Berita</a>
+                <a class="btn btn-success" href="{{ route('kategor.create') }}"> Input Kategori</a>
             </div>
         </div>
     </div>
@@ -21,24 +21,20 @@
     <table class="table table-bordered">
         <tr>
             <th width="20px" class="text-center">No</th>
-            <th width="280px"class="text-center">Judul Berita</th>
-            <th width="280px"class="text-center">Isi Berita</th>
             <th width="280px"class="text-center">Kategori</th>
             <th width="280px"class="text-center">Action</th>
         </tr>
-        @foreach ($berit as $Berita)
+        @foreach ($kategor as $Kategori)
         <tr>
             <td class="text-center">{{ ++$i }}</td>
             
-            <td>{{ $Berita->Judul }}</td>
-            <td>{{ $Berita->IsiBerita }}</td>
-            <td>{{ $Berita->kategori->NamaKategori }}</td>
+            <td>{{ $Kategori->NamaKategori }}</td>
             <td class="text-center">
-                            <form action="{{ route('berit.destroy', $Berita->id) }}" method="POST">
+                            <form action="{{ route('kategor.destroy',$Kategori->id) }}" method="POST">
             
-                               <a class="btn btn-info btn-sm" href="{{ route('berit.show',$Berita->id) }}">Show</a>
+                               <a class="btn btn-info btn-sm" href="{{ route('kategor.show',$Kategori->id) }}">Show</a>
             
-                                <a class="btn btn-primary btn-sm" href="{{ route('berit.edit',$Berita->id) }}">Edit</a>
+                                <a class="btn btn-primary btn-sm" href="{{ route('kategor.edit',$Kategori->id) }}">Edit</a>
             
                                 @csrf
                                 @method('DELETE')
@@ -50,6 +46,6 @@
                     @endforeach
                 </table>
             
-                {!! $berit->links() !!}
+                {!! $kategor->links() !!}
             
             @endsection
