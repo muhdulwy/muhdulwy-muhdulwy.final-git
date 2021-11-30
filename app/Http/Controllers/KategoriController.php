@@ -71,7 +71,7 @@ class KategoriController extends Controller
      */
     public function edit(Kategori $kategor)
     {
-        return view('kategor.edit', compact('kategor', 'gender'));
+        return view('kategor.edit', compact('kategor'));
     }
 
     /**

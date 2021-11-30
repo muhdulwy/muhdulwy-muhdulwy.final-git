@@ -58,7 +58,7 @@ class BeritaController extends Controller
      */
     public function show(Berita $berit)
     {
-        return view('berit.show', compact('Berit'));
+        return view('berit.show', compact('berit'));
     }
 
     /**
@@ -69,7 +69,9 @@ class BeritaController extends Controller
      */
     public function edit(Berita $berit)
     {
-        return view('berit.edit', compact('berit'));
+        $berit = Berita::all();
+        $kategor = Kategori::all();
+        return view('berit.edit', compact('kategor','berit'));
     }
 
     /**

@@ -31,9 +31,7 @@
             <td>{{ $Kategori->NamaKategori }}</td>
             <td class="text-center">
                             <form action="{{ route('kategor.destroy',$Kategori->id) }}" method="POST">
-            
-                               <a class="btn btn-info btn-sm" href="{{ route('kategor.show',$Kategori->id) }}">Show</a>
-            
+           
                                 <a class="btn btn-primary btn-sm" href="{{ route('kategor.edit',$Kategori->id) }}">Edit</a>
             
                                 @csrf

@@ -35,9 +35,6 @@
             <td>{{ $Berita->kategori->NamaKategori }}</td>
             <td class="text-center">
                             <form action="{{ route('berit.destroy', $Berita->id) }}" method="POST">
-            
-                               <a class="btn btn-info btn-sm" href="{{ route('berit.show',$Berita->id) }}">Show</a>
-            
                                 <a class="btn btn-primary btn-sm" href="{{ route('berit.edit',$Berita->id) }}">Edit</a>
             
                                 @csrf

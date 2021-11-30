@@ -23,20 +23,19 @@
     </div>
 @endif
 
-<form action="{{ route('berit.store') }}" method="POST">
+<form action="{{ route('berit.update', $berit->id) }}" method="POST">
     @csrf
-
      <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Judul Berita:</strong>
-                <input type="text" name="Judul" class="form-control" placeholder="Judul" value="{{ old('Judul') }}">
+                <input type="text" name="Judul" class="form-control" placeholder="Judul" value="{{ old('Judul', $berit->Judul) }}">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Isi Berita:</strong>
-                <input type="text" name="IsiBerita" class="form-control" placeholder="Isi Berita" value="{{ old('IsiBerita') }}">
+                <input type="text" name="IsiBerita" class="form-control" placeholder="Isi Berita" value="{{ old('IsiBerita', $berit->IsiBerita) }}">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
@@ -45,7 +44,7 @@
                 <select name="kategori_id" class="form-control">
                     <option value="">-- pilih Kategori --</option>
                     @foreach ($kategor as $sw)
-                        <option value="{{ $sw->id }}" {{ old('kategori_id') == $sw->id ? 'selected' : '' }}>{{ $sw->NamaKategori }}</option>
+                        <option value="{{ $sw->id }}" {{ old('kategori_id', $berit->kategori_id) == $sw->id ? 'selected' : '' }}>{{ $sw->NamaKategori }}</option>
                     @endforeach
                 </select>
             </div>
@@ -55,6 +54,5 @@
             <button type="submit" class="btn btn-primary">Submit</button>
         </div>
     </div>
-
 </form>
 @endsection
