@@ -69,7 +69,6 @@ class BeritaController extends Controller
      */
     public function edit(Berita $berit)
     {
-        $berit = Berita::all();
         $kategor = Kategori::all();
         return view('berit.edit', compact('kategor','berit'));
     }
