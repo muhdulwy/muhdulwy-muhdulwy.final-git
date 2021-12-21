@@ -21,20 +21,20 @@
 
 <div class="container">
     <h1 class="mb-4 text-center">Edit Berita</h1>
-<form action="{{ route('berita.update', $berita->id) }}" method="POST">
+<form action="{{ route('berita.update', $beritum->id) }}" method="POST">
     @csrf
     @method("PUT")
      <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Judul Berita:</strong>
-                <input type="text" name="Judul" class="form-control" placeholder="Judul" value="{{ old('Judul', $berita->Judul) }}">
+                <input type="text" name="Judul" class="form-control" placeholder="Judul" value="{{ old('Judul', $beritum->Judul) }}">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Isi Berita:</strong>
-                <input type="text" name="IsiBerita" class="form-control" placeholder="Isi Berita" value="{{ old('IsiBerita', $berita->IsiBerita) }}">
+                <input type="text" name="IsiBerita" class="form-control" placeholder="Isi Berita" value="{{ old('IsiBerita', $beritum->IsiBerita) }}">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
@@ -43,7 +43,7 @@
                 <select name="kategori_id" class="form-control">
                     <option value="">-- pilih Kategori --</option>
                     @foreach ($kategori as $sw)
-                        <option value="{{ $sw->id }}" {{ old('kategori_id', $berita->kategori_id) == $sw->id ? 'selected' : '' }}>{{ $sw->NamaKategori }}</option>
+                        <option value="{{ $sw->id }}" {{ old('kategori_id', $beritum->kategori_id) == $sw->id ? 'selected' : '' }}>{{ $sw->NamaKategori }}</option>
                     @endforeach
                 </select>
             </div>
