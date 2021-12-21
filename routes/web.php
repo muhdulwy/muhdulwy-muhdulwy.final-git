@@ -2,9 +2,9 @@
 
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\KategoriController;
-
 use Illuminate\Support\Facades\Route;
 
 
-Route::resource('berit', BeritaController::class);
-Route::resource('kategor', KategoriController::class);
+Route::resource('berita', BeritaController::class);
+Route::resource('kategori', KategoriController::class);
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

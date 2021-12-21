@@ -16,13 +16,13 @@ class KategoriController extends Controller
     {
         if($request->cari){
             $cari = '%' . $request->cari . '%';
-            $kategor=Kategori::where('NamaKategori','like', $cari)
+            $kategori=Kategori::where('NamaKategori','like', $cari)
                 ->paginate(10);
         } else {
-            $kategor = Kategori::latest()->paginate(10);
+            $kategori = Kategori::latest()->paginate(10);
         }
 
-        return view ('kategor.index',compact('kategor'))->with('i',(request()->input('page', 1)-1)* 10);
+        return view ('kategori.index',compact('kategori'))->with('i',(request()->input('page', 1)-1)* 10);
     }
 
     /**
@@ -32,7 +32,7 @@ class KategoriController extends Controller
      */
     public function create()
     {
-        return view('kategor.create',);
+        return view('kategori.create',);
     }
 
     /**
@@ -49,7 +49,7 @@ class KategoriController extends Controller
         ]);
         Kategori::create($request->all());
 
-        return redirect()->route('kategor.index')->with('succes','Data Berhasil Di Input');
+        return redirect()->route('kategori.index')->with('succes','Data Berhasil Di Input');
     }
 
     /**
@@ -58,9 +58,9 @@ class KategoriController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Kategori $kategor)
+    public function show(Kategori $kategori)
     {
-        return view('kategor.show', compact('kategor'));
+        return view('kategori.show', compact('kategori'));
     }
 
     /**
@@ -69,9 +69,9 @@ class KategoriController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Kategori $kategor)
+    public function edit(Kategori $kategori)
     {
-        return view('kategor.edit', compact('kategor'));
+        return view('kategori.edit', compact('kategori'));
     }
 
     /**
@@ -81,15 +81,15 @@ class KategoriController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Kategori $kategor)
+    public function update(Request $request, Kategori $kategori)
     {
         $request->validate([
             'NamaKategori' => 'required',
         ]);
 
-        $kategor->update($request->all());
+        $kategori->update($request->all());
 
-        return redirect()->route('kategor.index')->with('succes','Data Berhasil Di Update');
+        return redirect()->route('kategori.index')->with('succes','Data Berhasil Di Update');
     }
 
     /**
@@ -98,9 +98,9 @@ class KategoriController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Kategori $kategor)
+    public function destroy(Kategori $kategori)
     {
-        $kategor->delete();
-        return redirect()->route('kategor.index')->with('succes','Data Berhasil Di Hapus');
+        $kategori->delete();
+        return redirect()->route('kategori.index')->with('succes','Data Berhasil Di Hapus');
     }
 }

@@ -2,12 +2,8 @@
 
 @section('content')
 <div class="row mt-5 mb-5">
-    <div class="col-lg-12 margin-tb">
-        <div class="float-left">
-            <h2>Blog Berita ITC</h2>
-        </div>
         <div class="float-right">
-            <a class="btn btn-secondary" href="{{ route('berit.index') }}"> Kembali</a>
+            <a class="btn btn-secondary" href="{{ route('berita.index') }}"> Kembali</a>
         </div>
     </div>
 </div>
@@ -23,20 +19,22 @@
     </div>
 @endif
 
-<form action="{{ route('berit.store') }}" method="POST">
+<div class="container">
+    <h1 class="mb-4 text-center">Edit Berita</h1>
+<form action="{{ route('berita.update', $berita->id) }}" method="POST">
     @csrf
-
+    @method("PUT")
      <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Judul Berita:</strong>
-                <input type="text" name="Judul" class="form-control" placeholder="Judul" value="{{ old('Judul') }}">
+                <input type="text" name="Judul" class="form-control" placeholder="Judul" value="{{ old('Judul', $berita->Judul) }}">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Isi Berita:</strong>
-                <input type="text" name="IsiBerita" class="form-control" placeholder="Isi Berita" value="{{ old('IsiBerita') }}">
+                <input type="text" name="IsiBerita" class="form-control" placeholder="Isi Berita" value="{{ old('IsiBerita', $berita->IsiBerita) }}">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
@@ -44,8 +42,8 @@
                 <strong>Kategori:</strong>
                 <select name="kategori_id" class="form-control">
                     <option value="">-- pilih Kategori --</option>
-                    @foreach ($kategor as $sw)
-                        <option value="{{ $sw->id }}" {{ old('kategori_id') == $sw->id ? 'selected' : '' }}>{{ $sw->NamaKategori }}</option>
+                    @foreach ($kategori as $sw)
+                        <option value="{{ $sw->id }}" {{ old('kategori_id', $berita->kategori_id) == $sw->id ? 'selected' : '' }}>{{ $sw->NamaKategori }}</option>
                     @endforeach
                 </select>
             </div>
@@ -55,6 +53,5 @@
             <button type="submit" class="btn btn-primary">Submit</button>
         </div>
     </div>
-
 </form>
 @endsection
