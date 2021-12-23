@@ -7,4 +7,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::resource('berita', BeritaController::class);
 Route::resource('kategori', KategoriController::class);
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', function(){
+    return redirect()->route('home');
+});
+Auth::routes();
+
+Route::get('/beranda', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
